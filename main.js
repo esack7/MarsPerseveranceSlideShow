@@ -40,7 +40,6 @@ function UpdateImage(pictureArray) {
 
 async function GetImages() {
     try {
-        //https://mars.nasa.gov/rss/api/?feed=raw_images&category=mars2020&feedtype=json&num=50&page=0&order=sol+desc&&&extended=sample_type::full,
         let url = new URL('https://mars.nasa.gov/rss/api/');
         url.search = new URLSearchParams({
             feed: `raw_images`,
@@ -52,9 +51,7 @@ async function GetImages() {
             search: `|MCZ_LEFT|MCZ_RIGHT`,
             extended: `sample_type::full`
         }).toString();
-        console.log(url);
         let response = await fetch(url).then(res => res.json())
-        console.log(response);
         totalImageCount = response.total_results;
         const picArr = response.images;
         UpdateImage(picArr);
