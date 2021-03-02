@@ -17,9 +17,14 @@ function UpdateImage(pictureArray) {
         let title = document.getElementById('title');
         let picture = document.getElementById('pic');
         let caption = document.getElementById('caption');
+        let credit = document.getElementById('credit');
+        let link = document.getElementById('link');
         title.innerText = currentPic.title;
         picture.src = currentPic.image_files.large;
         caption.innerText = currentPic.caption;
+        link.href = `https://mars.nasa.gov/mars2020/multimedia/raw-images/${currentPic.imageid}`;
+        link.innerText = `https://mars.nasa.gov/mars2020/multimedia/raw-images/`;
+        credit.innerText = `Credit: ${currentPic.credit}`;
 
         currentImage++;
         currentImageCount++;
@@ -48,7 +53,7 @@ async function GetImages() {
             num: `${resultsCount}`,
             page: `${currentPage}`,
             order: `sol desc`,
-            search: `|MCZ_LEFT|MCZ_RIGHT`,
+            search: `|NAVCAM_LEFT|NAVCAM_RIGHT|FRONT_HAZCAM_LEFT_A|FRONT_HAZCAM_LEFT_B|FRONT_HAZCAM_RIGHT_A|FRONT_HAZCAM_RIGHT_B|REAR_HAZCAM_LEFT|REAR_HAZCAM_RIGHT|MCZ_LEFT|MCZ_RIGHT|SKYCAM|EDL_PUCAM1|EDL_PUCAM2|EDL_DDCAM|EDL_RUCAM|EDL_RDCAM`,
             extended: `sample_type::full`
         }).toString();
         let response = await fetch(url).then(res => res.json())
