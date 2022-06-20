@@ -1,4 +1,7 @@
+.pic-viewer {
+    max-width: 95vw;
+}
+
 #pic {
     max-height: 65vh;
-    max-width: 95vw;
-};
+}
