@@ -67,4 +67,20 @@ async function GetImages() {
   }
 }
 
+const makeFullScreen = (el) => {
+  if (!document.fullscreenElement) {
+    el.requestFullscreen();
+    return;
+  }
+  console.log("Fullscreen is not available in this browser");
+  return;
+};
+
+function fullscreen() {
+  const picture = document.getElementById("pic");
+  makeFullScreen(picture);
+}
+
+fullscreenButton.addEventListener("click", fullscreen);
+
 GetImages();
